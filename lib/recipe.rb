@@ -1,11 +1,15 @@
+require './lib/ingredient'
+
 class Recipe
-  attr_reader :name, :ingredients_required
+  attr_reader :name, :ingredients_required, :ingredients
   def initialize(name)
     @name = name
     @ingredients_required = {}
+    @ingredients = []
   end
   def add_ingredient(ingredient, amount_required)
     @ingredients_required[ingredient] = amount_required
+    @ingredients << ingredient
 
   end
 
@@ -14,8 +18,21 @@ class Recipe
   end
 
   def total_calories
-    @ingredients_required
     require "pry"; binding.pry
-
-  end
+    cals_per_ing = @ingredients.map {|ing| ing.calories}
+    units_per_ing = 1
+   
 end
+
+
+
+end
+
+
+
+
+# @ingredients_required.reduce(Hash.new(0)) do |result, ingredient|
+#   result[ingredient[0].name] += ingredient[0].calories
+#   result
+#   require "pry"; binding.pry
+# end

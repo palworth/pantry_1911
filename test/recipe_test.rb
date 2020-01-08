@@ -33,6 +33,13 @@ class RecipeTest < Minitest::Test
     assert_equal 8, @recipe.amount_required(@ingredient2)
   end
 
+  def test_it_returns_ingredients_array
+    assert_equal [],@recipe.ingredients
+    @recipe.add_ingredient(@ingredient1, 2)
+    @recipe.add_ingredient(@ingredient2, 8)
+    assert_equal [@ingredient1, @ingredient2],@recipe.ingredients
+  end
+
   def test_it_calculates_total_calories
     @recipe.add_ingredient(@ingredient1, 2)
     @recipe.add_ingredient(@ingredient2, 8)
